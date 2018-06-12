@@ -7,6 +7,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+using System.IO;
 using System.Windows.Forms;
 
 
@@ -399,7 +400,25 @@ namespace BgLevelApp
         //Save a text fil to disk
         public void WriteStringToFile(string input)
         {
-            System.IO.File.WriteAllText(@"c:\BgStrings.txt", input);
+            File.WriteAllText(@"c:\BgStrings.txt", input);
+        }
+
+        public void MakeAppStartWithWindows(bool makeAutoStart)
+        {
+            bool isAutostarted = false;
+            string path = Application.ExecutablePath.Replace("BgLevelApp.exe", "BgMonitor.lnk");
+            if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.Startup) + "\\BgMonitor.lnk"))
+            {
+                isAutostarted = true;
+            }
+            if (makeAutoStart && !isAutostarted)
+            {
+                File.Copy(path, Environment.GetFolderPath(Environment.SpecialFolder.Startup) + "\\BgMonitor.lnk");
+            }
+            else if (!makeAutoStart && isAutostarted)
+            {
+                File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.Startup) + "\\BgMonitor.lnk");
+            } 
         }
     }
 }

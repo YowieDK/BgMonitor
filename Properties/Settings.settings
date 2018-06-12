@@ -8,11 +8,11 @@
     <Setting Name="mmolOrMgDl" Type="System.String" Scope="User">
       <Value Profile="(Default)">mmol</Value>
     </Setting>
-    <Setting Name="bgHigh" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">14</Value>
+    <Setting Name="bgHigh" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">14.1</Value>
     </Setting>
-    <Setting Name="bgLow" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">4</Value>
+    <Setting Name="bgLow" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">4.1</Value>
     </Setting>
     <Setting Name="autoTransparent" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -33,10 +33,10 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="alarmOnHigh" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="alarmOnLow" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="alarmOnMissingBg" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -46,6 +46,9 @@
     </Setting>
     <Setting Name="settingsDoneOk" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="appStartWithWindows" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

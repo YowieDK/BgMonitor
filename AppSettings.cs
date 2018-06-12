@@ -21,8 +21,8 @@ namespace BgLevelApp
 
         private string nightscoutUrl;
         private string appShowMmolOrMgDl;
-        private int bgHighValue;
-        private int bgLowValue;
+        private double bgHighValue;
+        private double bgLowValue;
         private bool appAutoTransparent;
         private int appWindowHight;
         private int appWindowWidth;
@@ -34,13 +34,14 @@ namespace BgLevelApp
         private bool alarmOnMissingBgFromNs;
         private int minutesForBgMissingAlarm;
         private bool settingsIsDone;
+        private bool startWithWindows;
 
 
         public string NightscoutUrl { get => nightscoutUrl; set => nightscoutUrl = value; }
 
         public string AppShowMmolOrMgDl { get => appShowMmolOrMgDl; set => appShowMmolOrMgDl = value; }
-        public int BgHighValue { get => bgHighValue; set => bgHighValue = value; }
-        public int BgLowValue { get => bgLowValue; set => bgLowValue = value; }
+        public double BgHighValue { get => bgHighValue; set => bgHighValue = value; }
+        public double BgLowValue { get => bgLowValue; set => bgLowValue = value; }
         public bool AppAutoTransparent { get => appAutoTransparent; set => appAutoTransparent = value; }
         public int AppWindowHight { get => appWindowHight; set => appWindowHight = value; }
         public int AppWindowWidth { get => appWindowWidth; set => appWindowWidth = value; }
@@ -52,10 +53,10 @@ namespace BgLevelApp
         public bool AlarmOnMissingBgFromNs { get => alarmOnMissingBgFromNs; set => alarmOnMissingBgFromNs = value; }
         public int MinutesForBgMissingAlarm { get => minutesForBgMissingAlarm; set => minutesForBgMissingAlarm = value; }
         public bool SettingsIsDone { get => settingsIsDone; set => settingsIsDone = value; }
+        public bool StartWithWindows { get => startWithWindows; set => startWithWindows = value; }
 
         public void getAllSettings(){
-          /*  Properties.Settings.Default.mmolOrMgDl = "mgDl";
-            Properties.Settings.Default.Save();*/
+            //Get all settings from settings file
             nightscoutUrl = Properties.Settings.Default.urlForNightScout;
             appShowMmolOrMgDl = Properties.Settings.Default.mmolOrMgDl;
             bgHighValue = Properties.Settings.Default.bgHigh;
@@ -71,9 +72,11 @@ namespace BgLevelApp
             alarmOnMissingBgFromNs = Properties.Settings.Default.alarmOnMissingBg;
             minutesForBgMissingAlarm = Properties.Settings.Default.timeForMissingBg;
             settingsIsDone = Properties.Settings.Default.settingsDoneOk;
+            startWithWindows = Properties.Settings.Default.appStartWithWindows;
         }
 
         public void saveAllSettings() {
+            //Save all settings to settings file
             Properties.Settings.Default.urlForNightScout = nightscoutUrl;
             Properties.Settings.Default.mmolOrMgDl = appShowMmolOrMgDl;
             Properties.Settings.Default.bgHigh = bgHighValue;
@@ -89,6 +92,7 @@ namespace BgLevelApp
             Properties.Settings.Default.alarmOnMissingBg = alarmOnMissingBgFromNs;
             Properties.Settings.Default.timeForMissingBg = minutesForBgMissingAlarm;
             Properties.Settings.Default.settingsDoneOk = settingsIsDone;
+            Properties.Settings.Default.appStartWithWindows = startWithWindows;
 
             Properties.Settings.Default.Save();
 

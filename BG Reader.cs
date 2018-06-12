@@ -168,10 +168,12 @@ namespace BgLevelApp
                 alarm.StopBgAlarm();
             }
 
-            if (missingBgAlarmActive)
+            if (missingBgAlarmActive || connectionError)
             {
                 SnoozeMinutesSinceTimer.Interval = minutesToSnooze * 60000;
                 missingBgAlarmActive = false;
+                connectionError = false;
+                connectionAlarmOn = false;
                 alarm.alarmTimeIsSnoozed = true;
                 this.AlarmpictureBox.Hide();
                 SnoozeMinutesSinceTimer.Start();
@@ -199,8 +201,8 @@ namespace BgLevelApp
             //Check for alarm on high and low bg if we have a readable bg
             if (bgAsDouble != -99)
             {
-                int highBgValue = appSet.BgHighValue;
-                int lowBgValue = appSet.BgLowValue;
+                double highBgValue = appSet.BgHighValue;
+                double lowBgValue = appSet.BgLowValue;
 
                 //check for low and high bg alarm
                 if (bgAsDouble >= highBgValue || bgAsDouble <= lowBgValue)
@@ -678,23 +680,14 @@ namespace BgLevelApp
                 connectionError = true;
                 if (!alarm.alarmTimeIsSnoozed)
                 {
-                    if (!connectionAlarmStopped && !connectionAlarmOn)
+                    if (!connectionAlarmStopped && !connectionAlarmOn && appSet.SettingsIsDone)
                     {
                         alarm.StartTimeAlarm();
                         connectionAlarmOn = true;
                         this.AlarmpictureBox.Show();
                         BgLabel.Text = "---";                        //Show error message
                         MessageBox.Show("Bg monitor can not access your NightScout site. \nPlease check your internet connection and NightScout site", "Connection error");
-                    }
-                    else
-                    {
-                       /* missingBgAlarmActive = false;
-                        alarm.StopTimeAlarm();
-                        if (!bgLowAlarmActive && !bgHighAlarmActive)
-                        {
-                            this.AlarmpictureBox.Hide();
-                        }*/
-                    }
+                    }                   
                 }
             }
         }

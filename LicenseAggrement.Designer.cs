@@ -40,13 +40,14 @@ namespace BgLevelApp
             // 
             this.LicenseText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.LicenseText.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.LicenseText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.75F);
             this.LicenseText.ForeColor = System.Drawing.SystemColors.Info;
-            this.LicenseText.Location = new System.Drawing.Point(9, 9);
+            this.LicenseText.Location = new System.Drawing.Point(11, 11);
             this.LicenseText.Multiline = true;
             this.LicenseText.Name = "LicenseText";
             this.LicenseText.ReadOnly = true;
             this.LicenseText.ShortcutsEnabled = false;
-            this.LicenseText.Size = new System.Drawing.Size(244, 294);
+            this.LicenseText.Size = new System.Drawing.Size(350, 344);
             this.LicenseText.TabIndex = 0;
             this.LicenseText.TabStop = false;
             this.LicenseText.Text = resources.GetString("LicenseText.Text");
@@ -56,7 +57,7 @@ namespace BgLevelApp
             // 
             this.AcceptPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AcceptPanel.BackgroundImage")));
             this.AcceptPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.AcceptPanel.Location = new System.Drawing.Point(12, 309);
+            this.AcceptPanel.Location = new System.Drawing.Point(12, 361);
             this.AcceptPanel.Name = "AcceptPanel";
             this.AcceptPanel.Size = new System.Drawing.Size(99, 52);
             this.AcceptPanel.TabIndex = 1;
@@ -67,7 +68,7 @@ namespace BgLevelApp
             // 
             this.DeclinePanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DeclinePanel.BackgroundImage")));
             this.DeclinePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.DeclinePanel.Location = new System.Drawing.Point(151, 309);
+            this.DeclinePanel.Location = new System.Drawing.Point(257, 361);
             this.DeclinePanel.Name = "DeclinePanel";
             this.DeclinePanel.Size = new System.Drawing.Size(99, 52);
             this.DeclinePanel.TabIndex = 2;
@@ -79,7 +80,7 @@ namespace BgLevelApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(262, 362);
+            this.ClientSize = new System.Drawing.Size(371, 419);
             this.Controls.Add(this.DeclinePanel);
             this.Controls.Add(this.AcceptPanel);
             this.Controls.Add(this.LicenseText);

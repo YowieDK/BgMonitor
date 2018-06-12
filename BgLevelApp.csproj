@@ -58,6 +58,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -90,7 +91,19 @@
     <Compile Include="BgRip.cs" />
     <Compile Include="AppSettings.cs" />
     <Compile Include="Alarm.cs" />
+    <Compile Include="GraphViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GraphViewer.Designer.cs">
+      <DependentUpon>GraphViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Globals.cs" />
+    <Compile Include="InfoFormWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InfoFormWindow.Designer.cs">
+      <DependentUpon>InfoFormWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="LicenseAggrement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +122,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BgSettings.resx">
       <DependentUpon>BgSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphViewer.resx">
+      <DependentUpon>GraphViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfoFormWindow.resx">
+      <DependentUpon>InfoFormWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LicenseAggrement.resx">
       <DependentUpon>LicenseAggrement.cs</DependentUpon>

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace BgLevelApp
@@ -20,27 +21,36 @@ namespace BgLevelApp
             InitializeComponent();
         }
 
+        /// <summary>
+        // ********************** Make moveable Start ****************
+        /// </summary>
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HTCAPTION = 0x2;
+        [DllImport("User32.dll")]
+        public static extern bool ReleaseCapture();
+        [DllImport("User32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        void moveOnMouseDownOnSettings(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
+            }
+        }
+        // *****************  Make moveable End *******************
+
         private void BgSettings_Load(object sender, EventArgs e)
         {
             this.FormBorderStyle = FormBorderStyle.None;
+            //Add mouse down to components to make form draggeable
+            this.MouseDown += new MouseEventHandler(moveOnMouseDownOnSettings);
+            nsConnectionGroupBox.MouseDown += new MouseEventHandler(moveOnMouseDownOnSettings);
+            alarmSettingsGroupBox.MouseDown += new MouseEventHandler(moveOnMouseDownOnSettings);
+            MiscGroupBox.MouseDown += new MouseEventHandler(moveOnMouseDownOnSettings);
             SetValuesOnSettingsPanel();
         }
-
-        //Make form draggeable when no boarders
-        private const int WM_NCHITTEST = 0x84;
-        private const int HTCLIENT = 0x1;
-        private const int HTCAPTION = 0x2;
-        ///
-        /// Handling the window messages
-        ///
-        protected override void WndProc(ref Message message)
-        {
-            base.WndProc(ref message);
-
-            if (message.Msg == WM_NCHITTEST && (int)message.Result == HTCLIENT)
-                message.Result = (IntPtr)HTCAPTION;
-        }
-
+       
         public void SetValuesOnSettingsPanel()
         {
             appSet.getAllSettings();
@@ -51,10 +61,16 @@ namespace BgLevelApp
             if (appSet.AppShowMmolOrMgDl == "mmol")
             {
                 this.checkBoxUseMmol.Checked = true;
+                //set value of dummy radiobuttons
+                mmolRbt.Checked = true;
+                mgDlRbt.Checked = false;               
             }
             else
             {
                 this.checkBoxUseMmol.Checked = false;
+                //set value of dummy radiobuttons
+                mmolRbt.Checked = false;
+                mgDlRbt.Checked = true;
             }
             
             this.textBoxBgHigh.Text = appSet.BgHighValue.ToString();
@@ -64,7 +80,8 @@ namespace BgLevelApp
             this.checkBoxAlarmOnHigh.Checked = appSet.AlarmOnHighBg;
             this.checkBoxAlarmOnLow.Checked = appSet.AlarmOnLowBg;
             this.checkAlarmOnMissingBg.Checked = appSet.AlarmOnMissingBgFromNs;
-            this.textMinutesForMissingBgAlarm.Text = appSet.MinutesForBgMissingAlarm.ToString();            
+            this.textMinutesForMissingBgAlarm.Text = appSet.MinutesForBgMissingAlarm.ToString();
+            this.checkBoxStartWithWindows.Checked = appSet.StartWithWindows;
         }
 
         public bool saveValuesFromSettingsForm()
@@ -77,7 +94,8 @@ namespace BgLevelApp
             string messageForMessageBox = "Error";
             string captionForMessagBox = "Error";
             bool isNumber;
-            int tmpNumber;
+            double tmpNumber;
+            int tmpMinutesNumber;
 
             //Check value entered in NightScoutURL
             //Remove / in end of url, as it is noT allowed
@@ -95,7 +113,7 @@ namespace BgLevelApp
             }
 
             //Check value entered in high Bg
-            isNumber = int.TryParse(this.textBoxBgHigh.Text, out tmpNumber);
+            isNumber = double.TryParse(this.textBoxBgHigh.Text, out tmpNumber);
             if (!isNumber)
             {
                 urlOk = false;
@@ -124,7 +142,7 @@ namespace BgLevelApp
             }
 
             //Check value entered in Low Bg
-            isNumber = int.TryParse(this.textBoxBgLow.Text, out tmpNumber);
+            isNumber = double.TryParse(this.textBoxBgLow.Text, out tmpNumber);
             if (!isNumber)
             {
                 urlOk = false;
@@ -153,7 +171,7 @@ namespace BgLevelApp
             }
 
             //Check if entered minutes is ok
-            isNumber = int.TryParse(this.textMinutesForMissingBgAlarm.Text, out tmpNumber);
+            isNumber = int.TryParse(this.textMinutesForMissingBgAlarm.Text, out tmpMinutesNumber);
             if (!isNumber)
             {
                 urlOk = false;
@@ -164,7 +182,7 @@ namespace BgLevelApp
             else
             {
                 
-                if (tmpNumber < 1 || tmpNumber > 999)
+                if (tmpMinutesNumber < 1 || tmpMinutesNumber > 999)
                 {
                     urlOk = false;
                     allOk = false;
@@ -181,33 +199,45 @@ namespace BgLevelApp
             }
             else
             {
-                //Save if all ok
-                appSet.NightscoutUrl = this.textBoxNightUrl.Text;
-                if (this.checkBoxUseMmol.Checked)
-                {
+               //Set and save all settings                
+                try
+                { 
+                    //Call method in helpers
+                    newMiscHelper.MakeAppStartWithWindows(this.checkBoxStartWithWindows.Checked);                  
+                
+                    //Save if all ok
+                    appSet.NightscoutUrl = this.textBoxNightUrl.Text;
+                    if (this.checkBoxUseMmol.Checked)
+                    {
                     
-                    appSet.AppShowMmolOrMgDl = "mmol";
+                        appSet.AppShowMmolOrMgDl = "mmol";
+                    }
+                    else
+                    {
+                        appSet.AppShowMmolOrMgDl = "mgDl";
+                    }
+                    double.TryParse(this.textBoxBgHigh.Text, out tmpNumber);
+                    appSet.BgHighValue = tmpNumber;
+
+                    double.TryParse(this.textBoxBgLow.Text, out tmpNumber);
+                    appSet.BgLowValue = tmpNumber;
+
+                    appSet.StartWithWindows = this.checkBoxStartWithWindows.Checked;
+                    appSet.AppAutoTransparent = this.checkBoxAutoTrans.Checked;
+                    appSet.AppAlwaysOnTop = this.checkBoxAlwaysOnTop.Checked;
+                    appSet.AlarmOnHighBg = this.checkBoxAlarmOnHigh.Checked;
+                    appSet.AlarmOnLowBg = this.checkBoxAlarmOnLow.Checked;
+                    appSet.AlarmOnMissingBgFromNs = this.checkAlarmOnMissingBg.Checked;
+
+                    int.TryParse(this.textMinutesForMissingBgAlarm.Text, out tmpMinutesNumber);
+                    appSet.MinutesForBgMissingAlarm = tmpMinutesNumber;
+                    appSet.SettingsIsDone = true;
+                    appSet.saveAllSettings();
                 }
-                else
+                catch (Exception)
                 {
-                    appSet.AppShowMmolOrMgDl = "mgDl";
+                    //To Doo error message
                 }
-                int.TryParse(this.textBoxBgHigh.Text, out tmpNumber);
-                appSet.BgHighValue = tmpNumber;
-
-                int.TryParse(this.textBoxBgLow.Text, out tmpNumber);
-                appSet.BgLowValue = tmpNumber; 
-
-                appSet.AppAutoTransparent = this.checkBoxAutoTrans.Checked;
-                appSet.AppAlwaysOnTop = this.checkBoxAlwaysOnTop.Checked;
-                appSet.AlarmOnHighBg = this.checkBoxAlarmOnHigh.Checked;
-                appSet.AlarmOnLowBg = this.checkBoxAlarmOnLow.Checked;
-                appSet.AlarmOnMissingBgFromNs = this.checkAlarmOnMissingBg.Checked;
-
-                int.TryParse(this.textMinutesForMissingBgAlarm.Text, out tmpNumber);
-                appSet.MinutesForBgMissingAlarm = tmpNumber;
-                appSet.SettingsIsDone = true;
-                appSet.saveAllSettings();
             }
 
 
@@ -225,6 +255,69 @@ namespace BgLevelApp
         private void buttonCloseSettings_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mmolRbt_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (mmolRbt.Checked)
+                {
+                    //Check the checkbox acuatually in charge of this
+                    checkBoxUseMmol.Checked = true;
+                    //change alarm value when changing between mmol and mg/dL 
+                    var tmpBgHighAsInt = 0;
+                    var bgHighIsNumber = int.TryParse(this.textBoxBgHigh.Text , out tmpBgHighAsInt);
+                    var tmpBgLowAsInt = 0;
+                    var bgLowIsNumber = int.TryParse(this.textBoxBgLow.Text, out tmpBgLowAsInt);
+                    if (bgHighIsNumber && bgLowIsNumber)
+                    {
+                        //If BG high or low is set higher than 30, we assume that it is a mg/dL value
+                        if (tmpBgHighAsInt > 30)
+                        {
+                            var calculatedMmolHighBg = Math.Round(((double)tmpBgHighAsInt / 18), 1);
+                            textBoxBgHigh.Text = calculatedMmolHighBg.ToString();
+                        }
+                        if (tmpBgLowAsInt > 30)
+                        {
+                            var calculatedMmolLowBg = Math.Round(((double)tmpBgLowAsInt / 18), 1);
+                            textBoxBgLow.Text = calculatedMmolLowBg.ToString();
+                        }
+                    }
+                }
+                else
+                {
+                    checkBoxUseMmol.Checked = false;
+                    //change alarm value when changing between mmol and mg/dL 
+                    var tmpBgHighAsInt = 0.0;
+                    var bgHighIsNumber = double.TryParse(this.textBoxBgHigh.Text, out tmpBgHighAsInt);
+                    var tmpBgLowAsInt = 0.0;
+                    var bgLowIsNumber = double.TryParse(this.textBoxBgLow.Text, out tmpBgLowAsInt);
+                    if (bgHighIsNumber && bgLowIsNumber)
+                    {
+                        //If BG high or low is set higher than 30, we assume that it is a mg/dL value
+                        if (tmpBgHighAsInt < 30)
+                        {
+                            var calculatedMmolHighBg = Math.Round(((double)tmpBgHighAsInt * 18));
+                            textBoxBgHigh.Text = calculatedMmolHighBg.ToString();
+                        }
+                        if (tmpBgLowAsInt < 30)
+                        {
+                            var calculatedMmolLowBg = Math.Round(((double)tmpBgLowAsInt * 18));
+                            textBoxBgLow.Text = calculatedMmolLowBg.ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                //To doo error handling
+            }
         }
     }
 

@@ -18,4 +18,5 @@ C:\Users\shn.DAFOLO\Documents\Diabetes\BgLevelApp4Windows\BgLevelApp\obj\Debug\B
 C:\Users\shn.DAFOLO\Documents\Diabetes\BgLevelApp4Windows\BgLevelApp\obj\Debug\BgLevelApp.alarmActionPanel.resources
 C:\Users\shn.DAFOLO\Documents\Diabetes\BgLevelApp4Windows\BgLevelApp\obj\Debug\BgLevelApp.BgMonitor.resources
 C:\Users\shn.DAFOLO\Documents\Diabetes\BgLevelApp4Windows\BgLevelApp\obj\Debug\BgLevelApp.csproj.CopyComplete
+C:\Users\shn.DAFOLO\Documents\Diabetes\BgLevelApp4Windows\BgLevelApp\obj\Debug\BgLevelApp.Graphform.resources
 C:\Users\shn.DAFOLO\Documents\Diabetes\BgLevelApp4Windows\BgLevelApp\obj\Debug\BgLevelApp.csprojResolveAssemblyReference.cache

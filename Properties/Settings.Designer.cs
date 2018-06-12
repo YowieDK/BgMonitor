@@ -49,10 +49,10 @@ namespace BgLevelApp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("14")]
-        public int bgHigh {
+        [global::System.Configuration.DefaultSettingValueAttribute("14.1")]
+        public double bgHigh {
             get {
-                return ((int)(this["bgHigh"]));
+                return ((double)(this["bgHigh"]));
             }
             set {
                 this["bgHigh"] = value;
@@ -61,10 +61,10 @@ namespace BgLevelApp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("4")]
-        public int bgLow {
+        [global::System.Configuration.DefaultSettingValueAttribute("4.1")]
+        public double bgLow {
             get {
-                return ((int)(this["bgLow"]));
+                return ((double)(this["bgLow"]));
             }
             set {
                 this["bgLow"] = value;
@@ -145,7 +145,7 @@ namespace BgLevelApp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool alarmOnHigh {
             get {
                 return ((bool)(this["alarmOnHigh"]));
@@ -157,7 +157,7 @@ namespace BgLevelApp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool alarmOnLow {
             get {
                 return ((bool)(this["alarmOnLow"]));
@@ -200,6 +200,18 @@ namespace BgLevelApp.Properties {
             }
             set {
                 this["settingsDoneOk"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool appStartWithWindows {
+            get {
+                return ((bool)(this["appStartWithWindows"]));
+            }
+            set {
+                this["appStartWithWindows"] = value;
             }
         }
     }
