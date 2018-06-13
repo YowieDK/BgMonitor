@@ -140,7 +140,7 @@ namespace BgLevelApp
             this.buttonLicensAgree.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonLicensAgree.Name = "buttonLicensAgree";
             this.toolTip1.SetToolTip(this.buttonLicensAgree, resources.GetString("buttonLicensAgree.ToolTip"));
-            this.buttonLicensAgree.Click += new System.EventHandler(this.licensAgree_Click);
+            this.buttonLicensAgree.Click += new System.EventHandler(this.infoHelp_Click);
             this.buttonLicensAgree.MouseLeave += new System.EventHandler(this.licensAgree_MouseLeave);
             this.buttonLicensAgree.MouseHover += new System.EventHandler(this.licensAgree_MouseHover);
             // 

@@ -406,7 +406,7 @@
     <value>4</value>
   </data>
   <data name="buttonLicensAgree.ToolTip" xml:space="preserve">
-    <value>Open Licens Agrement</value>
+    <value>Open Info/help window</value>
   </data>
   <data name="&gt;&gt;buttonLicensAgree.Name" xml:space="preserve">
     <value>buttonLicensAgree</value>

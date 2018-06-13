@@ -54,8 +54,7 @@ namespace BgLevelApp
                 using (WebClient client = new WebClient())
                 {
                     stringFromCounter = client.DownloadString("https://us-central1-bgrtest-202711.cloudfunctions.net/BgCountAdd");
-                }
-                Console.WriteLine(stringFromCounter);
+                }                
             }
             catch (Exception)
             {

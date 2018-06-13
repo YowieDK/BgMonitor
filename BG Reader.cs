@@ -696,13 +696,12 @@ namespace BgLevelApp
         private void CloseDownTimer_Tick(object sender, EventArgs e)
         {
             this.Close();
-
         }
 
-        private void licensAgree_Click(object sender, EventArgs e)
+        private void infoHelp_Click(object sender, EventArgs e)
         {
-            LicenseAgrement licenseWindowButton = new LicenseAgrement();
-            licenseWindowButton.ShowDialog();
+            InfoFormWindow infoWindow = new InfoFormWindow();
+            infoWindow.ShowDialog();            
         }
 
         private void buttonSettings_Click(object sender, EventArgs e)
@@ -896,8 +895,6 @@ namespace BgLevelApp
                 Arrow45DownBox.Visible = false;
             }
 
-        }
-
-        
+        }        
     }
 }

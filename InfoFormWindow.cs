@@ -48,6 +48,20 @@ namespace BgLevelApp
             
         }
 
-        
+        private void closeSnoozePanel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnOpenLicenseAggre_Click(object sender, EventArgs e)
+        {
+            LicenseAgrement licenseWindowButton = new LicenseAgrement();
+            licenseWindowButton.ShowDialog();
+        }
+
+        private void btnCloseInfo_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
