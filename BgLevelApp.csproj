@@ -128,6 +128,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InfoFormWindow.resx">
       <DependentUpon>InfoFormWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="LicenseAggrement.resx">
       <DependentUpon>LicenseAggrement.cs</DependentUpon>
@@ -135,19 +136,19 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -158,16 +159,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Transparent.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\TransparentBlue.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\settingsIco.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\General-Get-Info-icon.png" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="AxWMPLib">
@@ -233,10 +225,14 @@
   <ItemGroup>
     <Content Include="bglevlappblod.ico" />
     <Content Include="bglevlappblod_wvE_icon.ico" />
+    <None Include="Resources\NSlogoBlack.png" />
+    <None Include="Resources\NSlogoWhite.png" />
+    <None Include="Resources\minimize15White.png" />
+    <None Include="Resources\InfoWhite.png" />
+    <None Include="Resources\settingsIcoWhite.png" />
+    <None Include="Resources\BackgroundBlackElipse.png" />
+    <None Include="Resources\BackgroundBlueElipse.png" />
     <None Include="Resources\bglevlappblod.ico" />
-    <None Include="Resources\SizeButt1.png" />
-    <None Include="Resources\SizeButt3.png" />
-    <None Include="Resources\SizeButt2.png" />
     <None Include="Resources\minimize15.png" />
   </ItemGroup>
   <ItemGroup>

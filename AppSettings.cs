@@ -35,6 +35,10 @@ namespace BgLevelApp
         private int minutesForBgMissingAlarm;
         private bool settingsIsDone;
         private bool startWithWindows;
+        private int backgroundColor;
+        private int applicationSize;
+        private int minutesToMinimize;
+        private double minimumTrans;
 
 
         public string NightscoutUrl { get => nightscoutUrl; set => nightscoutUrl = value; }
@@ -54,6 +58,10 @@ namespace BgLevelApp
         public int MinutesForBgMissingAlarm { get => minutesForBgMissingAlarm; set => minutesForBgMissingAlarm = value; }
         public bool SettingsIsDone { get => settingsIsDone; set => settingsIsDone = value; }
         public bool StartWithWindows { get => startWithWindows; set => startWithWindows = value; }
+        public int BackgroundColor { get => backgroundColor; set => backgroundColor = value; }
+        public int ApplicationSize { get => applicationSize; set => applicationSize = value; }
+        public int MinutesToMinimize { get => minutesToMinimize; set => minutesToMinimize = value; }
+        public double Minimumtrans { get => minimumTrans; set => minimumTrans = value; }
 
         public void getAllSettings(){
             //Get all settings from settings file
@@ -73,6 +81,10 @@ namespace BgLevelApp
             minutesForBgMissingAlarm = Properties.Settings.Default.timeForMissingBg;
             settingsIsDone = Properties.Settings.Default.settingsDoneOk;
             startWithWindows = Properties.Settings.Default.appStartWithWindows;
+            applicationSize = Properties.Settings.Default.appSize;
+            backgroundColor = Properties.Settings.Default.appBackColor;
+            minutesToMinimize = Properties.Settings.Default.minutesMinimizingApp;
+            minimumTrans = Properties.Settings.Default.minimumTransparence;
         }
 
         public void saveAllSettings() {
@@ -93,6 +105,10 @@ namespace BgLevelApp
             Properties.Settings.Default.timeForMissingBg = minutesForBgMissingAlarm;
             Properties.Settings.Default.settingsDoneOk = settingsIsDone;
             Properties.Settings.Default.appStartWithWindows = startWithWindows;
+            Properties.Settings.Default.appSize = applicationSize;
+            Properties.Settings.Default.appBackColor = backgroundColor;
+            Properties.Settings.Default.minutesMinimizingApp = minutesToMinimize;
+            Properties.Settings.Default.minimumTransparence = minimumTrans;
 
             Properties.Settings.Default.Save();
 

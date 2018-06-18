@@ -150,6 +150,26 @@ namespace BgLevelApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BackgroundBlackElipse {
+            get {
+                object obj = ResourceManager.GetObject("BackgroundBlackElipse", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BackgroundBlueElipse {
+            get {
+                object obj = ResourceManager.GetObject("BackgroundBlueElipse", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon bglevlappblod {
@@ -172,9 +192,49 @@ namespace BgLevelApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap InfoWhite {
+            get {
+                object obj = ResourceManager.GetObject("InfoWhite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap minimize15 {
             get {
                 object obj = ResourceManager.GetObject("minimize15", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap minimize15White {
+            get {
+                object obj = ResourceManager.GetObject("minimize15White", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NSlogoBlack {
+            get {
+                object obj = ResourceManager.GetObject("NSlogoBlack", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NSlogoWhite {
+            get {
+                object obj = ResourceManager.GetObject("NSlogoWhite", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -192,49 +252,9 @@ namespace BgLevelApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SizeButt1 {
+        internal static System.Drawing.Bitmap settingsIcoWhite {
             get {
-                object obj = ResourceManager.GetObject("SizeButt1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap SizeButt2 {
-            get {
-                object obj = ResourceManager.GetObject("SizeButt2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap SizeButt3 {
-            get {
-                object obj = ResourceManager.GetObject("SizeButt3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Transparent {
-            get {
-                object obj = ResourceManager.GetObject("Transparent", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap TransparentBlue {
-            get {
-                object obj = ResourceManager.GetObject("TransparentBlue", resourceCulture);
+                object obj = ResourceManager.GetObject("settingsIcoWhite", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

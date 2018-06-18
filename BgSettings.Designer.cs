@@ -54,23 +54,23 @@
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.rbtBackColorBlue = new System.Windows.Forms.RadioButton();
             this.rbtBackColorBlack = new System.Windows.Forms.RadioButton();
+            this.checkAlarmOnMissingBg = new System.Windows.Forms.CheckBox();
+            this.textMinutesForMissingBgAlarm = new System.Windows.Forms.TextBox();
+            this.checkBoxStartWithWindows = new System.Windows.Forms.CheckBox();
+            this.mmolRbt = new System.Windows.Forms.RadioButton();
+            this.mgDlRbt = new System.Windows.Forms.RadioButton();
             this.buttonSaveSettings = new System.Windows.Forms.Button();
             this.buttonCloseSettings = new System.Windows.Forms.Button();
-            this.checkAlarmOnMissingBg = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textMinutesForMissingBgAlarm = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.checkBoxStartWithWindows = new System.Windows.Forms.CheckBox();
             this.labelStartWithWindows = new System.Windows.Forms.Label();
             this.nsConnectionGroupBox = new System.Windows.Forms.GroupBox();
             this.alarmSettingsGroupBox = new System.Windows.Forms.GroupBox();
-            this.mmolRbt = new System.Windows.Forms.RadioButton();
-            this.mgDlRbt = new System.Windows.Forms.RadioButton();
             this.MiscGroupBox = new System.Windows.Forms.GroupBox();
             this.BacgroundColorPanel = new System.Windows.Forms.Panel();
             this.appSizePanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textMinutesToMinimize = new System.Windows.Forms.TextBox();
             this.setMinimizeTimerLabel = new System.Windows.Forms.Label();
             this.setBackgroundColorLabel = new System.Windows.Forms.Label();
             this.setAppSizeLabel = new System.Windows.Forms.Label();
@@ -218,6 +218,7 @@
             this.checkBoxAlarmOnHigh.Name = "checkBoxAlarmOnHigh";
             this.checkBoxAlarmOnHigh.Size = new System.Drawing.Size(15, 14);
             this.checkBoxAlarmOnHigh.TabIndex = 13;
+            this.toolTip1.SetToolTip(this.checkBoxAlarmOnHigh, "Turn BG high alarm on and off");
             this.checkBoxAlarmOnHigh.UseVisualStyleBackColor = true;
             // 
             // checkBoxAlarmOnLow
@@ -227,6 +228,7 @@
             this.checkBoxAlarmOnLow.Name = "checkBoxAlarmOnLow";
             this.checkBoxAlarmOnLow.Size = new System.Drawing.Size(15, 14);
             this.checkBoxAlarmOnLow.TabIndex = 14;
+            this.toolTip1.SetToolTip(this.checkBoxAlarmOnLow, "Turn low BG alarm on and off");
             this.checkBoxAlarmOnLow.UseVisualStyleBackColor = true;
             // 
             // textBoxBgHigh
@@ -235,6 +237,7 @@
             this.textBoxBgHigh.Name = "textBoxBgHigh";
             this.textBoxBgHigh.Size = new System.Drawing.Size(37, 22);
             this.textBoxBgHigh.TabIndex = 15;
+            this.toolTip1.SetToolTip(this.textBoxBgHigh, "set BG value where you want BG high alarm to sound");
             // 
             // textBoxBgLow
             // 
@@ -242,6 +245,7 @@
             this.textBoxBgLow.Name = "textBoxBgLow";
             this.textBoxBgLow.Size = new System.Drawing.Size(37, 22);
             this.textBoxBgLow.TabIndex = 16;
+            this.toolTip1.SetToolTip(this.textBoxBgLow, "set BG value where you want BG low alarm to sound");
             // 
             // textBoxNightUrl
             // 
@@ -333,20 +337,76 @@
             this.rbtBackColorBlue.TabIndex = 35;
             this.rbtBackColorBlue.TabStop = true;
             this.rbtBackColorBlue.Text = "Blue";
-            this.toolTip1.SetToolTip(this.rbtBackColorBlue, "Set app size to big");
+            this.toolTip1.SetToolTip(this.rbtBackColorBlue, "Set app background color to blue");
             this.rbtBackColorBlue.UseVisualStyleBackColor = true;
             // 
             // rbtBackColorBlack
             // 
             this.rbtBackColorBlack.AutoSize = true;
-            this.rbtBackColorBlack.Location = new System.Drawing.Point(116, 3);
+            this.rbtBackColorBlack.Location = new System.Drawing.Point(110, 3);
             this.rbtBackColorBlack.Name = "rbtBackColorBlack";
             this.rbtBackColorBlack.Size = new System.Drawing.Size(59, 20);
             this.rbtBackColorBlack.TabIndex = 36;
             this.rbtBackColorBlack.TabStop = true;
             this.rbtBackColorBlack.Text = "Black";
-            this.toolTip1.SetToolTip(this.rbtBackColorBlack, "Set app size to big");
+            this.toolTip1.SetToolTip(this.rbtBackColorBlack, "Set app background color to blue");
             this.rbtBackColorBlack.UseVisualStyleBackColor = true;
+            // 
+            // checkAlarmOnMissingBg
+            // 
+            this.checkAlarmOnMissingBg.AutoSize = true;
+            this.checkAlarmOnMissingBg.Location = new System.Drawing.Point(191, 86);
+            this.checkAlarmOnMissingBg.Name = "checkAlarmOnMissingBg";
+            this.checkAlarmOnMissingBg.Size = new System.Drawing.Size(15, 14);
+            this.checkAlarmOnMissingBg.TabIndex = 21;
+            this.toolTip1.SetToolTip(this.checkAlarmOnMissingBg, "Turn missing BG alarm on and off");
+            this.checkAlarmOnMissingBg.UseVisualStyleBackColor = true;
+            // 
+            // textMinutesForMissingBgAlarm
+            // 
+            this.textMinutesForMissingBgAlarm.Location = new System.Drawing.Point(190, 107);
+            this.textMinutesForMissingBgAlarm.Name = "textMinutesForMissingBgAlarm";
+            this.textMinutesForMissingBgAlarm.Size = new System.Drawing.Size(37, 22);
+            this.textMinutesForMissingBgAlarm.TabIndex = 24;
+            this.toolTip1.SetToolTip(this.textMinutesForMissingBgAlarm, "Set the time, in minutes, before alarm sounds when no new BG from NightScout has " +
+        "been recived");
+            // 
+            // checkBoxStartWithWindows
+            // 
+            this.checkBoxStartWithWindows.AutoSize = true;
+            this.checkBoxStartWithWindows.Location = new System.Drawing.Point(263, 78);
+            this.checkBoxStartWithWindows.Name = "checkBoxStartWithWindows";
+            this.checkBoxStartWithWindows.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxStartWithWindows.TabIndex = 26;
+            this.toolTip1.SetToolTip(this.checkBoxStartWithWindows, "Check to make app start with Windows");
+            this.checkBoxStartWithWindows.UseVisualStyleBackColor = true;
+            // 
+            // mmolRbt
+            // 
+            this.mmolRbt.AutoSize = true;
+            this.mmolRbt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.mmolRbt.Location = new System.Drawing.Point(172, 18);
+            this.mmolRbt.Name = "mmolRbt";
+            this.mmolRbt.Size = new System.Drawing.Size(69, 20);
+            this.mmolRbt.TabIndex = 29;
+            this.mmolRbt.TabStop = true;
+            this.mmolRbt.Text = "mmol/L";
+            this.toolTip1.SetToolTip(this.mmolRbt, "View BG values in mmol/L units");
+            this.mmolRbt.UseVisualStyleBackColor = true;
+            this.mmolRbt.CheckedChanged += new System.EventHandler(this.mmolRbt_CheckedChanged);
+            // 
+            // mgDlRbt
+            // 
+            this.mgDlRbt.AutoSize = true;
+            this.mgDlRbt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.mgDlRbt.Location = new System.Drawing.Point(252, 18);
+            this.mgDlRbt.Name = "mgDlRbt";
+            this.mgDlRbt.Size = new System.Drawing.Size(62, 20);
+            this.mgDlRbt.TabIndex = 30;
+            this.mgDlRbt.TabStop = true;
+            this.mgDlRbt.Text = "mg/dL";
+            this.toolTip1.SetToolTip(this.mgDlRbt, "View BG values in mg/dL units");
+            this.mgDlRbt.UseVisualStyleBackColor = true;
             // 
             // buttonSaveSettings
             // 
@@ -368,15 +428,6 @@
             this.buttonCloseSettings.UseVisualStyleBackColor = true;
             this.buttonCloseSettings.Click += new System.EventHandler(this.buttonCloseSettings_Click);
             // 
-            // checkAlarmOnMissingBg
-            // 
-            this.checkAlarmOnMissingBg.AutoSize = true;
-            this.checkAlarmOnMissingBg.Location = new System.Drawing.Point(191, 86);
-            this.checkAlarmOnMissingBg.Name = "checkAlarmOnMissingBg";
-            this.checkAlarmOnMissingBg.Size = new System.Drawing.Size(15, 14);
-            this.checkAlarmOnMissingBg.TabIndex = 21;
-            this.checkAlarmOnMissingBg.UseVisualStyleBackColor = true;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -388,14 +439,6 @@
             this.label2.Size = new System.Drawing.Size(156, 15);
             this.label2.TabIndex = 19;
             this.label2.Text = "Alarm on/off for missing Bg:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // textMinutesForMissingBgAlarm
-            // 
-            this.textMinutesForMissingBgAlarm.Location = new System.Drawing.Point(190, 107);
-            this.textMinutesForMissingBgAlarm.Name = "textMinutesForMissingBgAlarm";
-            this.textMinutesForMissingBgAlarm.Size = new System.Drawing.Size(37, 22);
-            this.textMinutesForMissingBgAlarm.TabIndex = 24;
             // 
             // label3
             // 
@@ -408,15 +451,6 @@
             this.label3.Size = new System.Drawing.Size(182, 15);
             this.label3.TabIndex = 23;
             this.label3.Text = "Minutes untill missing Bg alarm:";
-            // 
-            // checkBoxStartWithWindows
-            // 
-            this.checkBoxStartWithWindows.AutoSize = true;
-            this.checkBoxStartWithWindows.Location = new System.Drawing.Point(263, 78);
-            this.checkBoxStartWithWindows.Name = "checkBoxStartWithWindows";
-            this.checkBoxStartWithWindows.Size = new System.Drawing.Size(15, 14);
-            this.checkBoxStartWithWindows.TabIndex = 26;
-            this.checkBoxStartWithWindows.UseVisualStyleBackColor = true;
             // 
             // labelStartWithWindows
             // 
@@ -466,36 +500,11 @@
             this.alarmSettingsGroupBox.TabStop = false;
             this.alarmSettingsGroupBox.Text = "Alarm settings";
             // 
-            // mmolRbt
-            // 
-            this.mmolRbt.AutoSize = true;
-            this.mmolRbt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.mmolRbt.Location = new System.Drawing.Point(172, 18);
-            this.mmolRbt.Name = "mmolRbt";
-            this.mmolRbt.Size = new System.Drawing.Size(69, 20);
-            this.mmolRbt.TabIndex = 29;
-            this.mmolRbt.TabStop = true;
-            this.mmolRbt.Text = "mmol/L";
-            this.mmolRbt.UseVisualStyleBackColor = true;
-            this.mmolRbt.CheckedChanged += new System.EventHandler(this.mmolRbt_CheckedChanged);
-            // 
-            // mgDlRbt
-            // 
-            this.mgDlRbt.AutoSize = true;
-            this.mgDlRbt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.mgDlRbt.Location = new System.Drawing.Point(252, 18);
-            this.mgDlRbt.Name = "mgDlRbt";
-            this.mgDlRbt.Size = new System.Drawing.Size(62, 20);
-            this.mgDlRbt.TabIndex = 30;
-            this.mgDlRbt.TabStop = true;
-            this.mgDlRbt.Text = "mg/dL";
-            this.mgDlRbt.UseVisualStyleBackColor = true;
-            // 
             // MiscGroupBox
             // 
             this.MiscGroupBox.Controls.Add(this.BacgroundColorPanel);
             this.MiscGroupBox.Controls.Add(this.appSizePanel);
-            this.MiscGroupBox.Controls.Add(this.textBox1);
+            this.MiscGroupBox.Controls.Add(this.textMinutesToMinimize);
             this.MiscGroupBox.Controls.Add(this.setMinimizeTimerLabel);
             this.MiscGroupBox.Controls.Add(this.setBackgroundColorLabel);
             this.MiscGroupBox.Controls.Add(this.setAppSizeLabel);
@@ -548,12 +557,12 @@
             this.panel1.Size = new System.Drawing.Size(221, 27);
             this.panel1.TabIndex = 39;
             // 
-            // textBox1
+            // textMinutesToMinimize
             // 
-            this.textBox1.Location = new System.Drawing.Point(189, 177);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(37, 22);
-            this.textBox1.TabIndex = 34;
+            this.textMinutesToMinimize.Location = new System.Drawing.Point(189, 177);
+            this.textMinutesToMinimize.Name = "textMinutesToMinimize";
+            this.textMinutesToMinimize.Size = new System.Drawing.Size(37, 22);
+            this.textMinutesToMinimize.TabIndex = 34;
             // 
             // setMinimizeTimerLabel
             // 
@@ -599,6 +608,7 @@
             this.buttonReset.TabIndex = 32;
             this.buttonReset.Text = "Reset settings";
             this.buttonReset.UseVisualStyleBackColor = true;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
             // BgSettings
             // 
@@ -667,7 +677,7 @@
         private System.Windows.Forms.RadioButton rbtSizeSmall;
         private System.Windows.Forms.RadioButton rbtSizeMedium;
         private System.Windows.Forms.RadioButton rbtSizeBig;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textMinutesToMinimize;
         private System.Windows.Forms.Label setMinimizeTimerLabel;
         private System.Windows.Forms.Label setAppSizeLabel;
         private System.Windows.Forms.Label setBackgroundColorLabel;

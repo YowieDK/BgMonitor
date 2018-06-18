@@ -214,5 +214,53 @@ namespace BgLevelApp.Properties {
                 this["appStartWithWindows"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int appSize {
+            get {
+                return ((int)(this["appSize"]));
+            }
+            set {
+                this["appSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int appBackColor {
+            get {
+                return ((int)(this["appBackColor"]));
+            }
+            set {
+                this["appBackColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("15")]
+        public int minutesMinimizingApp {
+            get {
+                return ((int)(this["minutesMinimizingApp"]));
+            }
+            set {
+                this["minutesMinimizingApp"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.1")]
+        public double minimumTransparence {
+            get {
+                return ((double)(this["minimumTransparence"]));
+            }
+            set {
+                this["minimumTransparence"] = value;
+            }
+        }
     }
 }

@@ -42,7 +42,7 @@ namespace BgLevelApp
             this.minutesSinceLastBgLabel = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.buttonSettings = new System.Windows.Forms.Panel();
-            this.buttonLicensAgree = new System.Windows.Forms.Panel();
+            this.buttonInfoHelp = new System.Windows.Forms.Panel();
             this.AlarmpictureBox = new System.Windows.Forms.PictureBox();
             this.ArrowStraitBox = new System.Windows.Forms.PictureBox();
             this.ArrowDoubleDownBox = new System.Windows.Forms.PictureBox();
@@ -51,14 +51,12 @@ namespace BgLevelApp
             this.ArrowOneUpBox = new System.Windows.Forms.PictureBox();
             this.Arrow45UpBox = new System.Windows.Forms.PictureBox();
             this.ArrowOneDownBox = new System.Windows.Forms.PictureBox();
-            this.MinimizedBox = new System.Windows.Forms.PictureBox();
-            this.Size1Box = new System.Windows.Forms.PictureBox();
-            this.Size2Box = new System.Windows.Forms.PictureBox();
-            this.Size3Box = new System.Windows.Forms.PictureBox();
+            this.buttonMinimized = new System.Windows.Forms.PictureBox();
             this.CloseDownTimer = new System.Windows.Forms.Timer(this.components);
             this.SnoozeBgTimer = new System.Windows.Forms.Timer(this.components);
             this.SnoozeMinutesSinceTimer = new System.Windows.Forms.Timer(this.components);
             this.MinimizeTimer = new System.Windows.Forms.Timer(this.components);
+            this.buttonGoToNS = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.AlarmpictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ArrowStraitBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ArrowDoubleDownBox)).BeginInit();
@@ -67,10 +65,8 @@ namespace BgLevelApp
             ((System.ComponentModel.ISupportInitialize)(this.ArrowOneUpBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Arrow45UpBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ArrowOneDownBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MinimizedBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Size1Box)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Size2Box)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Size3Box)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonMinimized)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonGoToNS)).BeginInit();
             this.SuspendLayout();
             // 
             // closeWindow
@@ -81,7 +77,6 @@ namespace BgLevelApp
             this.closeWindow.Name = "closeWindow";
             this.toolTip1.SetToolTip(this.closeWindow, resources.GetString("closeWindow.ToolTip"));
             this.closeWindow.Click += new System.EventHandler(this.closeWindow_Click);
-            this.closeWindow.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.closeWindow.MouseLeave += new System.EventHandler(this.closeWindow_MouseLeave);
             this.closeWindow.MouseHover += new System.EventHandler(this.closeWindow_MouseHover);
             // 
@@ -97,6 +92,7 @@ namespace BgLevelApp
             this.BgLabel.BackColor = System.Drawing.Color.Transparent;
             this.BgLabel.CausesValidation = false;
             this.BgLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BgLabel.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.BgLabel.Name = "BgLabel";
             this.toolTip1.SetToolTip(this.BgLabel, resources.GetString("BgLabel.ToolTip"));
             this.BgLabel.Click += new System.EventHandler(this.BgLabel_Click);
@@ -132,17 +128,17 @@ namespace BgLevelApp
             this.buttonSettings.MouseLeave += new System.EventHandler(this.buttonSettings_MouseLeave);
             this.buttonSettings.MouseHover += new System.EventHandler(this.buttonSettings_MouseHover);
             // 
-            // buttonLicensAgree
+            // buttonInfoHelp
             // 
-            this.buttonLicensAgree.BackColor = System.Drawing.Color.Transparent;
-            this.buttonLicensAgree.BackgroundImage = global::BgLevelApp.Properties.Resources.Info;
-            resources.ApplyResources(this.buttonLicensAgree, "buttonLicensAgree");
-            this.buttonLicensAgree.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonLicensAgree.Name = "buttonLicensAgree";
-            this.toolTip1.SetToolTip(this.buttonLicensAgree, resources.GetString("buttonLicensAgree.ToolTip"));
-            this.buttonLicensAgree.Click += new System.EventHandler(this.infoHelp_Click);
-            this.buttonLicensAgree.MouseLeave += new System.EventHandler(this.licensAgree_MouseLeave);
-            this.buttonLicensAgree.MouseHover += new System.EventHandler(this.licensAgree_MouseHover);
+            this.buttonInfoHelp.BackColor = System.Drawing.Color.Transparent;
+            this.buttonInfoHelp.BackgroundImage = global::BgLevelApp.Properties.Resources.Info;
+            resources.ApplyResources(this.buttonInfoHelp, "buttonInfoHelp");
+            this.buttonInfoHelp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonInfoHelp.Name = "buttonInfoHelp";
+            this.toolTip1.SetToolTip(this.buttonInfoHelp, resources.GetString("buttonInfoHelp.ToolTip"));
+            this.buttonInfoHelp.Click += new System.EventHandler(this.infoHelp_Click);
+            this.buttonInfoHelp.MouseLeave += new System.EventHandler(this.licensAgree_MouseLeave);
+            this.buttonInfoHelp.MouseHover += new System.EventHandler(this.licensAgree_MouseHover);
             // 
             // AlarmpictureBox
             // 
@@ -230,47 +226,17 @@ namespace BgLevelApp
             this.ArrowOneDownBox.MouseLeave += new System.EventHandler(this.ArrowOneDownBox_MouseLeave);
             this.ArrowOneDownBox.MouseHover += new System.EventHandler(this.ArrowOneDownBox_MouseHover);
             // 
-            // MinimizedBox
+            // buttonMinimized
             // 
-            this.MinimizedBox.BackColor = System.Drawing.Color.Transparent;
-            this.MinimizedBox.Image = global::BgLevelApp.Properties.Resources.minimize15;
-            resources.ApplyResources(this.MinimizedBox, "MinimizedBox");
-            this.MinimizedBox.Name = "MinimizedBox";
-            this.MinimizedBox.TabStop = false;
-            this.toolTip1.SetToolTip(this.MinimizedBox, resources.GetString("MinimizedBox.ToolTip"));
-            this.MinimizedBox.Click += new System.EventHandler(this.MinimizedBox_Click);
-            this.MinimizedBox.MouseLeave += new System.EventHandler(this.ArrowOneDownBox_MouseLeave);
-            this.MinimizedBox.MouseHover += new System.EventHandler(this.ArrowOneDownBox_MouseHover);
-            // 
-            // Size1Box
-            // 
-            this.Size1Box.BackColor = System.Drawing.Color.Transparent;
-            this.Size1Box.Image = global::BgLevelApp.Properties.Resources.SizeButt1;
-            resources.ApplyResources(this.Size1Box, "Size1Box");
-            this.Size1Box.Name = "Size1Box";
-            this.Size1Box.TabStop = false;
-            this.toolTip1.SetToolTip(this.Size1Box, resources.GetString("Size1Box.ToolTip"));
-            this.Size1Box.Click += new System.EventHandler(this.Size1Box_Click);
-            // 
-            // Size2Box
-            // 
-            this.Size2Box.BackColor = System.Drawing.Color.Transparent;
-            this.Size2Box.Image = global::BgLevelApp.Properties.Resources.SizeButt2;
-            resources.ApplyResources(this.Size2Box, "Size2Box");
-            this.Size2Box.Name = "Size2Box";
-            this.Size2Box.TabStop = false;
-            this.toolTip1.SetToolTip(this.Size2Box, resources.GetString("Size2Box.ToolTip"));
-            this.Size2Box.Click += new System.EventHandler(this.Size2Box_Click);
-            // 
-            // Size3Box
-            // 
-            this.Size3Box.BackColor = System.Drawing.Color.Transparent;
-            this.Size3Box.Image = global::BgLevelApp.Properties.Resources.SizeButt3;
-            resources.ApplyResources(this.Size3Box, "Size3Box");
-            this.Size3Box.Name = "Size3Box";
-            this.Size3Box.TabStop = false;
-            this.toolTip1.SetToolTip(this.Size3Box, resources.GetString("Size3Box.ToolTip"));
-            this.Size3Box.Click += new System.EventHandler(this.Size3Box_Click);
+            this.buttonMinimized.BackColor = System.Drawing.Color.Transparent;
+            this.buttonMinimized.Image = global::BgLevelApp.Properties.Resources.minimize15;
+            resources.ApplyResources(this.buttonMinimized, "buttonMinimized");
+            this.buttonMinimized.Name = "buttonMinimized";
+            this.buttonMinimized.TabStop = false;
+            this.toolTip1.SetToolTip(this.buttonMinimized, resources.GetString("buttonMinimized.ToolTip"));
+            this.buttonMinimized.Click += new System.EventHandler(this.MinimizedBox_Click);
+            this.buttonMinimized.MouseLeave += new System.EventHandler(this.ArrowOneDownBox_MouseLeave);
+            this.buttonMinimized.MouseHover += new System.EventHandler(this.ArrowOneDownBox_MouseHover);
             // 
             // CloseDownTimer
             // 
@@ -289,15 +255,25 @@ namespace BgLevelApp
             this.MinimizeTimer.Interval = 900000;
             this.MinimizeTimer.Tick += new System.EventHandler(this.MinimizeTimer_Tick);
             // 
+            // buttonGoToNS
+            // 
+            this.buttonGoToNS.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.buttonGoToNS, "buttonGoToNS");
+            this.buttonGoToNS.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonGoToNS.Image = global::BgLevelApp.Properties.Resources.NSlogoBlack;
+            this.buttonGoToNS.Name = "buttonGoToNS";
+            this.buttonGoToNS.TabStop = false;
+            this.toolTip1.SetToolTip(this.buttonGoToNS, resources.GetString("buttonGoToNS.ToolTip"));
+            this.buttonGoToNS.Click += new System.EventHandler(this.buttonGoToNS_Click);
+            // 
             // BgMonitor
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.Size3Box);
-            this.Controls.Add(this.Size2Box);
-            this.Controls.Add(this.Size1Box);
-            this.Controls.Add(this.MinimizedBox);
+            this.BackgroundImage = global::BgLevelApp.Properties.Resources.BackgroundBlueElipse;
+            this.Controls.Add(this.buttonGoToNS);
+            this.Controls.Add(this.buttonMinimized);
             this.Controls.Add(this.ArrowOneDownBox);
             this.Controls.Add(this.Arrow45UpBox);
             this.Controls.Add(this.ArrowOneUpBox);
@@ -306,7 +282,7 @@ namespace BgLevelApp
             this.Controls.Add(this.ArrowDoubleDownBox);
             this.Controls.Add(this.ArrowStraitBox);
             this.Controls.Add(this.AlarmpictureBox);
-            this.Controls.Add(this.buttonLicensAgree);
+            this.Controls.Add(this.buttonInfoHelp);
             this.Controls.Add(this.buttonSettings);
             this.Controls.Add(this.minutesSinceLastBgLabel);
             this.Controls.Add(this.closeWindow);
@@ -316,6 +292,7 @@ namespace BgLevelApp
             this.Name = "BgMonitor";
             this.TopMost = true;
             this.TransparencyKey = System.Drawing.SystemColors.Control;
+            this.Activated += new System.EventHandler(this.BgMonitor_Activated);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.MouseLeave += new System.EventHandler(this.Form1_MouseLeave);
             this.MouseHover += new System.EventHandler(this.Form1_MouseHover);
@@ -327,10 +304,8 @@ namespace BgLevelApp
             ((System.ComponentModel.ISupportInitialize)(this.ArrowOneUpBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Arrow45UpBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ArrowOneDownBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MinimizedBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Size1Box)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Size2Box)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Size3Box)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonMinimized)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonGoToNS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -346,7 +321,7 @@ namespace BgLevelApp
         private ToolTip toolTip1;
         private Timer CloseDownTimer;
         private Panel buttonSettings;
-        private Panel buttonLicensAgree;
+        private Panel buttonInfoHelp;
         private PictureBox AlarmpictureBox;
         private Timer SnoozeBgTimer;
         private Timer SnoozeMinutesSinceTimer;
@@ -357,11 +332,9 @@ namespace BgLevelApp
         private PictureBox ArrowOneUpBox;
         private PictureBox Arrow45UpBox;
         private PictureBox ArrowOneDownBox;
-        private PictureBox MinimizedBox;
+        private PictureBox buttonMinimized;
         private Timer MinimizeTimer;
-        private PictureBox Size1Box;
-        private PictureBox Size2Box;
-        private PictureBox Size3Box;
+        private PictureBox buttonGoToNS;
     }
 }
 

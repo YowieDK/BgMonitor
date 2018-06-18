@@ -33,6 +33,7 @@
             this.bgMonitorInfoHeader = new System.Windows.Forms.Label();
             this.historyBehindLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.userGuideLabel = new System.Windows.Forms.Label();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.closeSnoozePanel = new System.Windows.Forms.Label();
@@ -40,7 +41,7 @@
             this.btnCloseInfo = new System.Windows.Forms.Button();
             this.toolTipInfoWindow = new System.Windows.Forms.ToolTip(this.components);
             this.appByLabel = new System.Windows.Forms.Label();
-            this.userGuideLabel = new System.Windows.Forms.Label();
+            this.versionLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,10 +78,22 @@
             this.panel1.Size = new System.Drawing.Size(424, 263);
             this.panel1.TabIndex = 2;
             // 
+            // userGuideLabel
+            // 
+            this.userGuideLabel.AutoSize = true;
+            this.userGuideLabel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userGuideLabel.ForeColor = System.Drawing.Color.Cornsilk;
+            this.userGuideLabel.Location = new System.Drawing.Point(3, 6);
+            this.userGuideLabel.Name = "userGuideLabel";
+            this.userGuideLabel.Size = new System.Drawing.Size(71, 15);
+            this.userGuideLabel.TabIndex = 4;
+            this.userGuideLabel.Text = "User guide:";
+            // 
             // listBox2
             // 
+            this.listBox2.Enabled = false;
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(46, 1332);
+            this.listBox2.Location = new System.Drawing.Point(14, 318);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(120, 95);
             this.listBox2.TabIndex = 3;
@@ -133,22 +146,22 @@
             this.appByLabel.AutoSize = true;
             this.appByLabel.Font = new System.Drawing.Font("Arial", 7F);
             this.appByLabel.ForeColor = System.Drawing.Color.Cornsilk;
-            this.appByLabel.Location = new System.Drawing.Point(334, 506);
+            this.appByLabel.Location = new System.Drawing.Point(334, 490);
             this.appByLabel.Name = "appByLabel";
             this.appByLabel.Size = new System.Drawing.Size(100, 13);
             this.appByLabel.TabIndex = 8;
             this.appByLabel.Text = "Made by Søren Høy";
             // 
-            // userGuideLabel
+            // versionLabel
             // 
-            this.userGuideLabel.AutoSize = true;
-            this.userGuideLabel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userGuideLabel.ForeColor = System.Drawing.Color.Cornsilk;
-            this.userGuideLabel.Location = new System.Drawing.Point(3, 6);
-            this.userGuideLabel.Name = "userGuideLabel";
-            this.userGuideLabel.Size = new System.Drawing.Size(71, 15);
-            this.userGuideLabel.TabIndex = 4;
-            this.userGuideLabel.Text = "User guide:";
+            this.versionLabel.AutoSize = true;
+            this.versionLabel.Font = new System.Drawing.Font("Arial", 7F);
+            this.versionLabel.ForeColor = System.Drawing.Color.Cornsilk;
+            this.versionLabel.Location = new System.Drawing.Point(364, 504);
+            this.versionLabel.Name = "versionLabel";
+            this.versionLabel.Size = new System.Drawing.Size(68, 13);
+            this.versionLabel.TabIndex = 9;
+            this.versionLabel.Text = "Version 0.9.0";
             // 
             // InfoFormWindow
             // 
@@ -156,6 +169,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(436, 520);
+            this.Controls.Add(this.versionLabel);
             this.Controls.Add(this.appByLabel);
             this.Controls.Add(this.btnCloseInfo);
             this.Controls.Add(this.btnOpenLicenseAgree);
@@ -186,5 +200,6 @@
         private System.Windows.Forms.ToolTip toolTipInfoWindow;
         private System.Windows.Forms.Label appByLabel;
         private System.Windows.Forms.Label userGuideLabel;
+        private System.Windows.Forms.Label versionLabel;
     }
 }

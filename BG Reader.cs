@@ -64,75 +64,118 @@ namespace BgLevelApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //set this form global so I can use functions from this class from other classes
-            Globals.form = this;
-            if (!appSet.LicenseAgrRead)
+            try
             {
-                LicenseAgrement licenseWindow = new LicenseAgrement();
-                licenseWindow.ShowDialog();
-            }
-            //Make form moveable MinimizedBox
-            this.MouseDown += new MouseEventHandler(moveOnMouseDown);
-            BgLabel.MouseDown += new MouseEventHandler(moveOnMouseDown);
-            minutesSinceLastBgLabel.MouseDown += new MouseEventHandler(moveOnMouseDown);
-            ArrowStraitBox.MouseDown += new MouseEventHandler(moveOnMouseDown);
-            ArrowOneUpBox.MouseDown += new MouseEventHandler(moveOnMouseDown);
-            ArrowOneDownBox.MouseDown += new MouseEventHandler(moveOnMouseDown);
-            ArrowDoubleUpBox.MouseDown += new MouseEventHandler(moveOnMouseDown);
-            ArrowDoubleDownBox.MouseDown += new MouseEventHandler(moveOnMouseDown);
-            Arrow45UpBox.MouseDown += new MouseEventHandler(moveOnMouseDown);
-            Arrow45DownBox.MouseDown += new MouseEventHandler(moveOnMouseDown);
-            //MinimizedBox.MouseDown += new MouseEventHandler(moveOnMouseDown);
+                bool colorAndSizeIsSet = false;
+                //set this form global so I can use functions from this class from other classes
+                Globals.form = this;
 
-            this.FormClosing += new FormClosingEventHandler(bgMonitor_FormClosing);            
-            this.TopMost = appSet.AppAlwaysOnTop;
-            this.FormBorderStyle = FormBorderStyle.None;
+                if (!appSet.LicenseAgrRead)
+                {
+                    LicenseAgrement licenseWindow = new LicenseAgrement();
+                    licenseWindow.ShowDialog();
+                }
 
-            double windowScale = 1.0;
-            int windowWidth = this.Width;
-            int windowHeight = this.Height;
+                //Set size and color if settings and license is done. This is done to make sure you don't see default color and size before it changes
+                if (appSet.SettingsIsDone && appSet.LicenseAgrRead)
+                {
+                    //Setbackground color
+                    SetBackgroundColor(appSet.BackgroundColor);
+                    //Set app size
+                    ScaleApp(appSet.ApplicationSize);
+                    colorAndSizeIsSet = true;
+                }
 
-            this.Width = System.Convert.ToInt32(Math.Round(windowWidth * windowScale));
-            this.Height = System.Convert.ToInt32(Math.Round(windowHeight * windowScale));
-            closeWindow.Location = new Point(System.Convert.ToInt32(Math.Round(closeWindow.Location.X * windowScale)), System.Convert.ToInt32(Math.Round(closeWindow.Location.Y * windowScale)));
+                //Make form moveable MinimizedBox
+                this.MouseDown += new MouseEventHandler(moveOnMouseDown);
+                BgLabel.MouseDown += new MouseEventHandler(moveOnMouseDown);
+                minutesSinceLastBgLabel.MouseDown += new MouseEventHandler(moveOnMouseDown);
+                ArrowStraitBox.MouseDown += new MouseEventHandler(moveOnMouseDown);
+                ArrowOneUpBox.MouseDown += new MouseEventHandler(moveOnMouseDown);
+                ArrowOneDownBox.MouseDown += new MouseEventHandler(moveOnMouseDown);
+                ArrowDoubleUpBox.MouseDown += new MouseEventHandler(moveOnMouseDown);
+                ArrowDoubleDownBox.MouseDown += new MouseEventHandler(moveOnMouseDown);
+                Arrow45UpBox.MouseDown += new MouseEventHandler(moveOnMouseDown);
+                Arrow45DownBox.MouseDown += new MouseEventHandler(moveOnMouseDown);
+                //MinimizedBox.MouseDown += new MouseEventHandler(moveOnMouseDown);
 
-            //Hide alarm indicator
-            this.AlarmpictureBox.Hide();
-            appSet.getAllSettings();
-            if (NewHelper.CheckConnectionToNs(appSet.NightscoutUrl) == "ok")
-            {
-                newBgRip.getSourceFromUrl(appSet.NightscoutUrl);
-                minutesSinceLastBgLabel.Text = newBgRip.MinutesSinceLastBg + " Minutes since last sgv";
-                var BgLabelText = newBgRip.CalcBg;
-                BgLabel.Text = BgLabelText;
-                BgLabel.ForeColor = NewHelper.CalculateColorFromBg(BgLabelText);
-                //Start timer
-            }
-            GetBgTimer.Start();
-            
-            //Start timer that closes the app to avoid closing exception
-            if (!appSet.LicenseAgrRead)
-            {
-                CloseDownTimer.Start();
-            }
-            else
-            {
-                this.Enabled = true;
-            }
+                this.FormClosing += new FormClosingEventHandler(bgMonitor_FormClosing);
+                this.TopMost = appSet.AppAlwaysOnTop;
+                this.FormBorderStyle = FormBorderStyle.None;
 
-            //Open settings if not done and licensagreement read and accepted
-            BgSettings settingsWindow = new BgSettings();
-            if (!appSet.SettingsIsDone && appSet.LicenseAgrRead)
-            {
-                settingsWindow.ShowDialog();
+                double windowScale = 1.0;
+                int windowWidth = this.Width;
+                int windowHeight = this.Height;
+
+                this.Width = System.Convert.ToInt32(Math.Round(windowWidth * windowScale));
+                this.Height = System.Convert.ToInt32(Math.Round(windowHeight * windowScale));
+                closeWindow.Location = new Point(System.Convert.ToInt32(Math.Round(closeWindow.Location.X * windowScale)), System.Convert.ToInt32(Math.Round(closeWindow.Location.Y * windowScale)));
+
+                //Hide alarm indicator
+                this.AlarmpictureBox.Hide();
                 appSet.getAllSettings();
-            }
-            GetBg_Tick(null, null);
+                if (NewHelper.CheckConnectionToNs(appSet.NightscoutUrl) == "ok")
+                {
+                    newBgRip.getSourceFromUrl(appSet.NightscoutUrl);
+                    minutesSinceLastBgLabel.Text = newBgRip.MinutesSinceLastBg + " Minutes since last sgv";
+                    var BgLabelText = newBgRip.CalcBg;
+                    BgLabel.Text = BgLabelText;
+                    BgLabel.ForeColor = NewHelper.CalculateColorFromBg(BgLabelText);
+                }
+                //Start timer
+                GetBgTimer.Start();
 
-            //Call add to opened counter
-            newBgRip.callAddToCounter();
+                //Start timer that closes the app to avoid closing exception
+                if (!appSet.LicenseAgrRead)
+                {
+                    CloseDownTimer.Start();
+                }
+                else
+                {
+                    this.Enabled = true;
+                }
+
+                //Open settings if not done and licensagreement read and accepted
+                BgSettings settingsWindow = new BgSettings();
+                if (!appSet.SettingsIsDone && appSet.LicenseAgrRead)
+                {
+                    settingsWindow.ShowDialog();
+                    appSet.getAllSettings();
+
+                }
+
+                //Get first bg here
+                GetBg_Tick(null, null);
+
+                //make syre this don't run twice in load app
+                if (!colorAndSizeIsSet)
+                {
+                    //Setbackground color
+                    SetBackgroundColor(appSet.BackgroundColor);
+                    //Set app size
+                    ScaleApp(appSet.ApplicationSize);
+                }
+
+                //Set minimize tooltip                               
+                SetButtonMinimizeToolTopText(appSet.MinutesToMinimize.ToString());
+
+                //Call add to opened counter
+                newBgRip.callAddToCounter();
+            }
+            catch (Exception)
+            {
+                //TODO
+            }
         }
 
+        //Set tooltip text
+        public void SetButtonMinimizeToolTopText(string toolTipMinutsText)
+        {
+            string template = "Minimize app for {0} minutes";
+            string minutesData = toolTipMinutsText;
+            string toolTipMessage = string.Format(template, minutesData);
+            toolTip1.SetToolTip(buttonMinimized, toolTipMessage);
+        }
         //Kill the alarm untill next alarm
         public void KillAlarm()
         {
@@ -416,15 +459,32 @@ namespace BgLevelApp
                            
         }
 
+        //public method so SetBacground can be called from other class, 1 for blue and 2 for black
+        public void SetBackgroundColor(int color)
+        {
+            if (color == 2)
+            {
+                this.BackgroundImage = Properties.Resources.BackgroundBlackElipse;
+                buttonMinimized.Image = Properties.Resources.minimize15White;
+                buttonInfoHelp.BackgroundImage = Properties.Resources.InfoWhite;
+                buttonSettings.BackgroundImage = Properties.Resources.settingsIcoWhite;
+                buttonGoToNS.Image = Properties.Resources.NSlogoWhite;
+            }
+            else if (color ==1)
+            {
+                this.BackgroundImage = Properties.Resources.BackgroundBlueElipse;
+                buttonMinimized.Image = Properties.Resources.minimize15;
+                buttonInfoHelp.BackgroundImage = Properties.Resources.Info;
+                buttonSettings.BackgroundImage = Properties.Resources.settingsIco;
+                buttonGoToNS.Image = Properties.Resources.NSlogoBlack;
+            }
+        }
+
         //When app is cllosing do this
         void bgMonitor_FormClosing(object sender, FormClosingEventArgs e)
         {
            // appSet.saveAllSettings();
-        }
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        }       
 
         private void closeWindow_Click(object sender, EventArgs e)
         {
@@ -599,8 +659,6 @@ namespace BgLevelApp
             transparentOffTimer.Start();
         }
 
-
-
         private void transparentOffTimer_Tick(object sender, EventArgs e)
         {
             if (!mouseIsOverApp && !mouseIsOverSettings && !mouseIsOverLicense && !mouseIsOverBgLabel && !mouseIsOverMinnustSince && !mouseIsOverClose && !bgLowAlarmActive && !bgHighAlarmActive && !missingBgAlarmActive)
@@ -761,6 +819,9 @@ namespace BgLevelApp
         {
             MinimizeTimer.Stop();
             this.WindowState = FormWindowState.Minimized;
+            appSet.getAllSettings();
+            var millisecondsToMinimizeApp = appSet.MinutesToMinimize * 60000;
+            MinimizeTimer.Interval = millisecondsToMinimizeApp;             
             MinimizeTimer.Start();
         }
 
@@ -799,16 +860,16 @@ namespace BgLevelApp
                 AlarmpictureBox.Location = new Point(204, 160);
                 BgLabel.Location = new Point(31, 55);
                 minutesSinceLastBgLabel.Location = new Point(76, 40);
-                MinimizedBox.Location = new Point(95, 174);                
+                buttonMinimized.Location = new Point(95, 174);                
                 buttonSettings.Location = new Point(165, 177);
                 closeWindow.Location = new Point(141, 12);
-                Size1Box.Location = new Point(20, 73);
-                Size2Box.Location = new Point(21, 101);
-                Size3Box.Location = new Point(22, 127);                
+                buttonGoToNS.Location = new Point(13, 94);
+                     
 
                 //Set the size font of some of the components             
                 BgLabel.Size = new Size(216, 108);
                 minutesSinceLastBgLabel.Size = new Size(165, 15);
+                buttonGoToNS.Size = new Size(28, 38);
                 BgLabel.Font = new Font(BgLabel.Font.FontFamily, 72);
                 minutesSinceLastBgLabel.Font = new Font(minutesSinceLastBgLabel.Font.FontFamily, 9, FontStyle.Bold);
                 
@@ -817,8 +878,8 @@ namespace BgLevelApp
                 minutesSinceLastBgLabel.Text = newBgRip.MinutesSinceLastBg + " Minutes since last sgv";
 
                 //Show and hide components that are not visible in all views
-                MinimizedBox.Show();
-                buttonLicensAgree.Show();               
+                buttonMinimized.Show();
+                buttonInfoHelp.Show();               
             }
             //scaling medium
             if (scalingNumber == 2)
@@ -837,15 +898,15 @@ namespace BgLevelApp
                 AlarmpictureBox.Location = new Point(145, 129);
                 BgLabel.Location = new Point(28, 39);
                 minutesSinceLastBgLabel.Location = new Point(83, 34);
-                MinimizedBox.Location = new Point(79, 130);
+                buttonMinimized.Location = new Point(79, 130);
                 buttonSettings.Location = new Point(114, 130);
                 closeWindow.Location = new Point(111, 9);
-                Size1Box.Location = new Point(21, 59);
-                Size2Box.Location = new Point(22, 82);
-                Size3Box.Location = new Point(23, 102);
+                buttonGoToNS.Location = new Point(10, 75);
+
 
                 //Set the size font of some of the components             
                 BgLabel.Size = new Size(175, 90);
+                buttonGoToNS.Size = new Size(22, 30);
                 minutesSinceLastBgLabel.Size = new Size(76, 15);
                 BgLabel.Font = new Font(BgLabel.Font.FontFamily, 56);
                 minutesSinceLastBgLabel.Font = new Font(minutesSinceLastBgLabel.Font.FontFamily, 9, FontStyle.Bold);
@@ -855,8 +916,8 @@ namespace BgLevelApp
                 minutesSinceLastBgLabel.Text = newBgRip.MinutesSinceLastBg + " Minutes";
 
                 //Show and hide components that are not visible in all views
-                MinimizedBox.Show();
-                buttonLicensAgree.Hide();
+                buttonMinimized.Show();
+                buttonInfoHelp.Hide();
             }
             //scaling small
             if (scalingNumber == 3)
@@ -870,12 +931,11 @@ namespace BgLevelApp
                 minutesSinceLastBgLabel.Location = new Point(46, 21);                
                 buttonSettings.Location = new Point(43, 78);
                 closeWindow.Location = new Point(67, 2);
-                Size1Box.Location = new Point(14, 29);
-                Size2Box.Location = new Point(15, 51);
-                Size3Box.Location = new Point(16, 71);
+                buttonGoToNS.Location = new Point(6, 45);
 
                 //Set the size font of some of the components             
                 BgLabel.Size = new Size(121, 50);
+                buttonGoToNS.Size = new Size(20, 27);
                 minutesSinceLastBgLabel.Size = new Size(67, 13);
                 BgLabel.Font = new Font(BgLabel.Font.FontFamily, 36);
                 minutesSinceLastBgLabel.Font = new Font(minutesSinceLastBgLabel.Font.FontFamily, 7, FontStyle.Bold);                
@@ -884,8 +944,8 @@ namespace BgLevelApp
                 minutesSinceLastBgLabel.Text = newBgRip.MinutesSinceLastBg + " Minutes";
 
                 //Show and hide components that are not visible in all views
-                MinimizedBox.Hide();
-                buttonLicensAgree.Hide();
+                buttonMinimized.Hide();
+                buttonInfoHelp.Hide();
                 ArrowStraitBox.Visible = false;
                 ArrowOneUpBox.Visible = false;
                 ArrowOneDownBox.Visible = false;
@@ -895,6 +955,30 @@ namespace BgLevelApp
                 Arrow45DownBox.Visible = false;
             }
 
-        }        
+        }
+
+        private void buttonGoToNS_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Open Ns in default browser
+                System.Diagnostics.Process.Start(appSet.NightscoutUrl);
+            }
+            catch (Exception)
+            {
+                //TODO error message
+            }
+        }
+
+        //set tmp Visibillity when window becomes active
+        private void BgMonitor_Activated(object sender, EventArgs e)
+        {
+            var appOpacity = this.Opacity;
+            if (appOpacity != 1)
+            {
+                this.Opacity = 1.0;
+                transparentOffTimer.Start();
+            }
+        }
     }
 }

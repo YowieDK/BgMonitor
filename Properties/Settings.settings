@@ -50,5 +50,17 @@
     <Setting Name="appStartWithWindows" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="appSize" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="appBackColor" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="minutesMinimizingApp" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">15</Value>
+    </Setting>
+    <Setting Name="minimumTransparence" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0.1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

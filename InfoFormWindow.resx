@@ -129,8 +129,11 @@ I would like to give a special thanks to Terry L. Witt, for helping me test this
 app and giving surgestions on how to improve the GUI and functionallity of 
 this app.
 If you need help, want to report any errors or just request new funktionallity
-Go to: https://www.facebook.com/BgmonitorNS</value>
+go to: https://www.facebook.com/BgmonitorNS</value>
   </data>
+  <metadata name="toolTipInfoWindow.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="toolTipInfoWindow.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
