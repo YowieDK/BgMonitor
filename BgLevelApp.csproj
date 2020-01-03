@@ -225,6 +225,7 @@
   <ItemGroup>
     <Content Include="bglevlappblod.ico" />
     <Content Include="bglevlappblod_wvE_icon.ico" />
+    <None Include="Resources\BgMonitorNumbered.jpg" />
     <None Include="Resources\NSlogoBlack.png" />
     <None Include="Resources\NSlogoWhite.png" />
     <None Include="Resources\minimize15White.png" />

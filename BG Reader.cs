@@ -860,8 +860,8 @@ namespace BgLevelApp
                 AlarmpictureBox.Location = new Point(204, 160);
                 BgLabel.Location = new Point(31, 55);
                 minutesSinceLastBgLabel.Location = new Point(76, 40);
-                buttonMinimized.Location = new Point(95, 174);                
-                buttonSettings.Location = new Point(165, 177);
+                buttonMinimized.Location = new Point(95, 168);                
+                buttonSettings.Location = new Point(165, 168);
                 closeWindow.Location = new Point(141, 12);
                 buttonGoToNS.Location = new Point(13, 94);
                      

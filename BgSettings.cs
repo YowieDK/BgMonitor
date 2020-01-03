@@ -433,7 +433,18 @@ namespace BgLevelApp
 
         private void buttonReset_Click(object sender, EventArgs e)
         {
+            string message = "Do you want to reset settings?";
+            string caption = "Reset";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result;
 
+            // Displays the MessageBox.
+            result = MessageBox.Show(message, caption, buttons);
+
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                ResetValuesOnSettingsPanel();
+            }
         }
     }
 

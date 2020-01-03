@@ -62,6 +62,6 @@ namespace BgLevelApp
         private void btnCloseInfo_Click(object sender, EventArgs e)
         {
             this.Close();
-        }     
+        }  
     }
 }

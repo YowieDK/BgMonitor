@@ -33,6 +33,7 @@
             this.bgMonitorInfoHeader = new System.Windows.Forms.Label();
             this.historyBehindLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.userGuideLabel = new System.Windows.Forms.Label();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,7 +43,9 @@
             this.toolTipInfoWindow = new System.Windows.Forms.ToolTip(this.components);
             this.appByLabel = new System.Windows.Forms.Label();
             this.versionLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // bgMonitorInfoHeader
@@ -70,6 +73,8 @@
             // panel1
             // 
             this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.userGuideLabel);
             this.panel1.Controls.Add(this.listBox2);
             this.panel1.Controls.Add(this.label1);
@@ -77,6 +82,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(424, 263);
             this.panel1.TabIndex = 2;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox1.Image = global::BgLevelApp.Properties.Resources.BgMonitorNumbered;
+            this.pictureBox1.Location = new System.Drawing.Point(14, 26);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(379, 175);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
             // 
             // userGuideLabel
             // 
@@ -93,7 +109,7 @@
             // 
             this.listBox2.Enabled = false;
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(14, 318);
+            this.listBox2.Location = new System.Drawing.Point(14, 427);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(120, 95);
             this.listBox2.TabIndex = 3;
@@ -161,7 +177,16 @@
             this.versionLabel.Name = "versionLabel";
             this.versionLabel.Size = new System.Drawing.Size(68, 13);
             this.versionLabel.TabIndex = 9;
-            this.versionLabel.Text = "Version 0.9.0";
+            this.versionLabel.Text = "Version 1.0.0";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(11, 219);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "label2";
             // 
             // InfoFormWindow
             // 
@@ -182,6 +207,7 @@
             this.Load += new System.EventHandler(this.InfoFormWindow_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,5 +227,7 @@
         private System.Windows.Forms.Label appByLabel;
         private System.Windows.Forms.Label userGuideLabel;
         private System.Windows.Forms.Label versionLabel;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label2;
     }
 }

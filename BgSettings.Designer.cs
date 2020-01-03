@@ -113,7 +113,7 @@
             this.labelAlwaysOnTop.BackColor = System.Drawing.Color.Transparent;
             this.labelAlwaysOnTop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelAlwaysOnTop.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.labelAlwaysOnTop.Location = new System.Drawing.Point(3, 47);
+            this.labelAlwaysOnTop.Location = new System.Drawing.Point(3, 75);
             this.labelAlwaysOnTop.Name = "labelAlwaysOnTop";
             this.labelAlwaysOnTop.Size = new System.Drawing.Size(166, 15);
             this.labelAlwaysOnTop.TabIndex = 4;
@@ -204,7 +204,7 @@
             // checkBoxAlwaysOnTop
             // 
             this.checkBoxAlwaysOnTop.AutoSize = true;
-            this.checkBoxAlwaysOnTop.Location = new System.Drawing.Point(189, 50);
+            this.checkBoxAlwaysOnTop.Location = new System.Drawing.Point(189, 78);
             this.checkBoxAlwaysOnTop.Name = "checkBoxAlwaysOnTop";
             this.checkBoxAlwaysOnTop.Size = new System.Drawing.Size(15, 14);
             this.checkBoxAlwaysOnTop.TabIndex = 12;
@@ -374,7 +374,7 @@
             // checkBoxStartWithWindows
             // 
             this.checkBoxStartWithWindows.AutoSize = true;
-            this.checkBoxStartWithWindows.Location = new System.Drawing.Point(263, 78);
+            this.checkBoxStartWithWindows.Location = new System.Drawing.Point(263, 51);
             this.checkBoxStartWithWindows.Name = "checkBoxStartWithWindows";
             this.checkBoxStartWithWindows.Size = new System.Drawing.Size(15, 14);
             this.checkBoxStartWithWindows.TabIndex = 26;
@@ -458,7 +458,7 @@
             this.labelStartWithWindows.BackColor = System.Drawing.Color.Transparent;
             this.labelStartWithWindows.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelStartWithWindows.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.labelStartWithWindows.Location = new System.Drawing.Point(3, 75);
+            this.labelStartWithWindows.Location = new System.Drawing.Point(3, 48);
             this.labelStartWithWindows.Name = "labelStartWithWindows";
             this.labelStartWithWindows.Size = new System.Drawing.Size(245, 15);
             this.labelStartWithWindows.TabIndex = 25;
